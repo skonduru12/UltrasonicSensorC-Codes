@@ -1,0 +1,50 @@
+int trig=11;
+int echo=12;
+int Count;
+  float duration;
+  float distance;
+long dictate () {
+
+
+  digitalWrite(trig, LOW);
+  delayMicroseconds(2);
+
+
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+ 
+
+
+duration = pulseIn(echo, HIGH);
+
+
+distance = duration * 0.034 / 2;
+}
+
+
+void setup() {
+  dictate();
+Serial.begin(9600);
+pinMode (trig,OUTPUT);
+pinMode (echo,INPUT);
+}
+
+
+void loop() {
+  dictate();
+Serial.println("Waiting for object");
+Serial.println(distance);
+
+
+while (distance<=100){
+  dictate();
+  Serial.println("Detected Object");
+  if (distance >100){
+    Serial.println("Object Gone");
+    Count++;
+    Serial.print("Objects Passed: ");
+    Serial.println(Count);
+  }
+}
+}
