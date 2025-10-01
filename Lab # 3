@@ -1,21 +1,21 @@
-int trigPin=11;
-int echoPin=12;
+int trig=11;
+int echo=12;
   float duration;
   float distance;
 long dictate () {
 
 
-  digitalWrite(trigPin, LOW);
+  digitalWrite(trig, LOW);
   delayMicroseconds(2);
 
 
-  digitalWrite(trigPin, HIGH);
+  digitalWrite(trig, HIGH);
   delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+  digitalWrite(trig, LOW);
  
 
 
-duration = pulseIn(echoPin, HIGH);
+duration = pulseIn(echo, HIGH);
 
 
 distance = duration * 0.034 / 2;
@@ -25,8 +25,8 @@ distance = duration * 0.034 / 2;
 void setup() {
   dictate();
 Serial.begin(9600);
-pinMode (trigPin,OUTPUT);
-pinMode (echoPin,INPUT);
+pinMode (trig,OUTPUT);
+pinMode (echo,INPUT);
 }
 
 
